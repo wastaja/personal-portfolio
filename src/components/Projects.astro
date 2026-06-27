@@ -1,0 +1,81 @@
+---
+const projects = [
+  {
+    title: "Squash Performance Analytics",
+    description:
+      "End-to-end analytics pipeline built with DuckDB, SQL and Python. Layered data models (staging, marts) feed a win probability prediction model based on historical performance, recent form, and match metrics. Orchestrated with Make for a modular SQL + Python workflow.",
+    tags: ["Python", "DuckDB", "SQL", "Data Modeling", "Makefile"],
+    href: "https://github.com/wastaja",
+  },
+  {
+    title: "Cheese Analytics Pipeline",
+    description:
+      "Web scraping pipeline using requests and BeautifulSoup, with data cleaning and feature engineering feeding a similarity scoring model for product recommendations. Modular Python scripts orchestrated via Make.",
+    tags: ["Python", "DuckDB", "SQL", "Web Scraping", "BeautifulSoup"],
+    href: "https://github.com/wastaja",
+  },
+];
+---
+
+<section id="projects" class="px-6 py-28 md:px-10">
+  <div class="reveal mx-auto max-w-6xl">
+    <p
+      class="font-body mb-3 text-sm font-medium tracking-[0.3em] uppercase"
+      style="color: var(--color-accent);"
+    >
+      03 / Projects
+    </p>
+    <h2
+      class="font-heading mb-14 text-5xl font-bold tracking-tight uppercase md:text-7xl"
+      style="color: var(--color-text);"
+    >
+      Projects
+    </h2>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        projects.map((project) => (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1"
+            style="border-color: var(--color-border);"
+          >
+            <h3
+              class="font-heading mb-4 text-3xl font-bold tracking-tight uppercase"
+              style="color: var(--color-text);"
+            >
+              {project.title}
+            </h3>
+            <p
+              class="font-body mb-6 text-base leading-relaxed"
+              style="color: var(--color-muted);"
+            >
+              {project.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  class="font-body rounded-full border px-3 py-1 text-xs"
+                  style="border-color: var(--color-border); color: var(--color-text);"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <span
+              class="font-body mt-6 inline-flex items-center gap-2 text-sm font-semibold tracking-wide uppercase transition-opacity"
+              style="color: var(--color-accent);"
+            >
+              View on GitHub
+              <span class="transition-transform group-hover:translate-x-1">
+                &rarr;
+              </span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

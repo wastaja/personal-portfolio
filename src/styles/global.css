@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@import "@fontsource/barlow-condensed/400.css";
+@import "@fontsource/barlow-condensed/600.css";
+@import "@fontsource/barlow-condensed/700.css";
+@import "@fontsource/barlow-condensed/900.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/dm-sans/700.css";
+
+@theme {
+  --font-heading: "Barlow Condensed", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+:root {
+  --color-bg: #0d0d0d;
+  --color-text: #f0ebe1;
+  --color-accent: #c0392b;
+  --color-border: #2a2a2a;
+  --color-muted: #a8a39a;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --color-bg: #f5f2ee;
+  --color-text: #0d0d0d;
+  --color-border: #ddd6cc;
+  --color-muted: #5a564f;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#projects a.group:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.35);
+}
+
+.hero-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: hero-in 0.8s ease forwards;
+}
+
+@keyframes hero-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,190 @@
+---
+const roles = [
+  {
+    title: "Analytics Engineer",
+    company: "Just Join IT",
+    period: "Nov 2025 — Present",
+    bullets: [
+      "Designed reusable analytical data models in Snowflake using dbt",
+      "Built semantic data models and standardized business metrics across Sales, Product, Marketing, CS",
+      "Developed SQL transformations from raw operational data to analysis-ready datasets",
+      "Integrated CRM (Pipedrive), product analytics and internal data sources",
+      "Improved legacy analytics queries and reporting structures",
+    ],
+    stack: ["Advanced SQL", "Snowflake", "dbt", "Python", "PostgreSQL", "APIs", "Git"],
+  },
+  {
+    title: "Business Data Analyst",
+    company: "Just Join IT",
+    period: "Apr 2024 — Nov 2025",
+    bullets: [
+      "Built Power BI dashboards for marketing, sales and operational reporting",
+      "Developed early dbt models in Snowflake",
+      "Cohort analysis, funnel tracking, performance analysis",
+      "Defined consistent business metrics across teams",
+    ],
+    stack: ["SQL", "Snowflake", "dbt", "Power BI", "Advanced Google Sheets"],
+  },
+  {
+    title: "Response Rate Specialist",
+    company: "Just Join IT",
+    period: "Jul 2022 — Mar 2024",
+    bullets: [
+      "Designed Twitter engagement strategy: +20% response rate, +35% engagement",
+      "Built performance dashboards in Google Sheets",
+      "Campaign data analysis and user engagement metrics",
+    ],
+    stack: ["Google Analytics", "Google Sheets", "CRM"],
+  },
+];
+
+const education = [
+  {
+    title: "Data Engineer Course",
+    org: "Infoshare Academy",
+    period: "In progress, exp. Aug 2026",
+    stack: ["Python", "PySpark", "AWS", "ETL", "Kafka", "Airflow", "Docker", "Databricks", "DynamoDB"],
+  },
+  {
+    title: "Management, Master's",
+    org: "SWPS University Warsaw",
+    period: "In progress, exp. 2027",
+    stack: [],
+  },
+  {
+    title: "Management & Leadership, Bachelor's",
+    org: "SWPS University Warsaw",
+    period: "2020 — 2023",
+    stack: [],
+  },
+];
+---
+
+<section id="experience" class="px-6 py-28 md:px-10">
+  <div class="reveal mx-auto max-w-6xl">
+    <p
+      class="font-body mb-3 text-sm font-medium tracking-[0.3em] uppercase"
+      style="color: var(--color-accent);"
+    >
+      02 / Experience
+    </p>
+    <h2
+      class="font-heading mb-14 text-5xl font-bold tracking-tight uppercase md:text-7xl"
+      style="color: var(--color-text);"
+    >
+      Experience
+    </h2>
+
+    <div class="relative">
+      <div
+        class="absolute top-0 bottom-0 left-0 w-px md:left-[160px]"
+        style="background-color: var(--color-border);"
+      >
+      </div>
+
+      <div class="space-y-16">
+        {
+          roles.map((role) => (
+            <div class="relative pl-8 md:grid md:grid-cols-[160px_1fr] md:gap-10 md:pl-0">
+              <div
+                class="absolute top-1 -left-[5px] h-3 w-3 rounded-full md:left-[155px]"
+                style="background-color: var(--color-accent);"
+              />
+              <p
+                class="font-body mb-4 text-sm tracking-wide md:mb-0 md:pt-1 md:text-right"
+                style="color: var(--color-muted);"
+              >
+                {role.period}
+              </p>
+              <div>
+                <h3
+                  class="font-heading text-2xl font-bold tracking-tight uppercase md:text-3xl"
+                  style="color: var(--color-text);"
+                >
+                  {role.title}
+                </h3>
+                <p
+                  class="font-body mt-1 mb-4 text-base font-medium"
+                  style="color: var(--color-accent);"
+                >
+                  {role.company}
+                </p>
+                <ul class="mb-5 space-y-2">
+                  {role.bullets.map((bullet) => (
+                    <li
+                      class="font-body flex gap-3 text-base leading-relaxed"
+                      style="color: var(--color-text);"
+                    >
+                      <span style="color: var(--color-accent);">—</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                  {role.stack.map((tech) => (
+                    <span
+                      class="font-body rounded-full border px-3 py-1 text-xs"
+                      style="border-color: var(--color-border); color: var(--color-muted);"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mt-20">
+      <h3
+        class="font-heading mb-8 text-sm font-semibold tracking-[0.2em] uppercase"
+        style="color: var(--color-muted);"
+      >
+        Education
+      </h3>
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          education.map((edu) => (
+            <div
+              class="rounded-2xl border p-6"
+              style="border-color: var(--color-border);"
+            >
+              <p
+                class="font-body mb-2 text-xs tracking-wide"
+                style="color: var(--color-muted);"
+              >
+                {edu.period}
+              </p>
+              <h4
+                class="font-heading text-xl font-bold tracking-tight uppercase"
+                style="color: var(--color-text);"
+              >
+                {edu.title}
+              </h4>
+              <p
+                class="font-body mt-1 text-sm font-medium"
+                style="color: var(--color-accent);"
+              >
+                {edu.org}
+              </p>
+              {edu.stack.length > 0 && (
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {edu.stack.map((tech) => (
+                    <span
+                      class="font-body rounded-full border px-3 py-1 text-xs"
+                      style="border-color: var(--color-border); color: var(--color-muted);"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

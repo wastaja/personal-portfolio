@@ -1,0 +1,95 @@
+---
+const skills = [
+  "SQL",
+  "Snowflake",
+  "dbt",
+  "Python",
+  "Power BI",
+  "DuckDB",
+  "PySpark",
+  "Apache Airflow",
+  "Docker",
+  "Git",
+  "PostgreSQL",
+  "APIs",
+];
+
+const languages = [
+  { name: "Polish", level: "Native" },
+  { name: "Russian", level: "Native" },
+  { name: "English", level: "Fluent" },
+  { name: "French", level: "Intermediate" },
+];
+---
+
+<section id="about" class="px-6 py-28 md:px-10">
+  <div class="reveal mx-auto max-w-6xl">
+    <p
+      class="font-body mb-3 text-sm font-medium tracking-[0.3em] uppercase"
+      style="color: var(--color-accent);"
+    >
+      01 / About
+    </p>
+    <h2
+      class="font-heading mb-14 text-5xl font-bold tracking-tight uppercase md:text-7xl"
+      style="color: var(--color-text);"
+    >
+      About Me
+    </h2>
+
+    <div class="grid gap-12 md:grid-cols-2 md:gap-20">
+      <div>
+        <p
+          class="font-body text-xl leading-relaxed md:text-2xl"
+          style="color: var(--color-text);"
+        >
+          Analytics Engineer with 3+ years building data models, pipelines,
+          and BI layers. Currently transitioning into Data Engineering —
+          working with Snowflake, dbt, PySpark, and Airflow. I care about
+          clean data, scalable systems, and making complex things simple.
+        </p>
+      </div>
+
+      <div>
+        <h3
+          class="font-heading mb-4 text-sm font-semibold tracking-[0.2em] uppercase"
+          style="color: var(--color-muted);"
+        >
+          Skills
+        </h3>
+        <div class="mb-10 flex flex-wrap gap-2">
+          {
+            skills.map((skill) => (
+              <span
+                class="font-body rounded-full border px-4 py-1.5 text-sm"
+                style="border-color: var(--color-border); color: var(--color-text);"
+              >
+                {skill}
+              </span>
+            ))
+          }
+        </div>
+
+        <h3
+          class="font-heading mb-4 text-sm font-semibold tracking-[0.2em] uppercase"
+          style="color: var(--color-muted);"
+        >
+          Languages
+        </h3>
+        <ul class="space-y-2">
+          {
+            languages.map((lang) => (
+              <li
+                class="font-body flex items-center justify-between border-b py-2 text-base"
+                style="border-color: var(--color-border); color: var(--color-text);"
+              >
+                <span>{lang.name}</span>
+                <span style="color: var(--color-muted);">{lang.level}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
