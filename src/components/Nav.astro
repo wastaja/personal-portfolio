@@ -3,7 +3,6 @@ const links = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#blog", label: "Blog" },
   { href: "#contact", label: "Contact" },
 ];
 ---
@@ -46,7 +45,7 @@ const links = [
           fill="none"
           stroke="currentColor"
           stroke-width="2"
-          class="hidden h-4 w-4"
+          class="h-4 w-4"
         >
           <circle cx="12" cy="12" r="4"></circle>
           <path
@@ -60,7 +59,7 @@ const links = [
           fill="none"
           stroke="currentColor"
           stroke-width="2"
-          class="h-4 w-4"
+          class="hidden h-4 w-4"
         >
           <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
         </svg>
@@ -74,12 +73,27 @@ const links = [
       style="border-color: var(--color-border); color: var(--color-text);"
     >
       <svg
+        id="icon-sun-mobile"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         stroke-width="2"
         class="h-4 w-4"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+        ></path>
+      </svg>
+      <svg
+        id="icon-moon-mobile"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        class="hidden h-4 w-4"
       >
         <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
       </svg>
@@ -95,12 +109,10 @@ const links = [
       document.documentElement.removeAttribute("data-theme");
     }
     localStorage.setItem("theme", theme);
-    const sun = document.getElementById("icon-sun");
-    const moon = document.getElementById("icon-moon");
-    if (sun && moon) {
-      sun.classList.toggle("hidden", theme !== "light");
-      moon.classList.toggle("hidden", theme === "light");
-    }
+    const suns = document.querySelectorAll("#icon-sun, #icon-sun-mobile");
+    const moons = document.querySelectorAll("#icon-moon, #icon-moon-mobile");
+    suns.forEach((el) => el.classList.toggle("hidden", theme === "light"));
+    moons.forEach((el) => el.classList.toggle("hidden", theme !== "light"));
   }
 
   function currentTheme() {
