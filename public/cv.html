@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taja Vasilevich — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #F5F2EE;
+      --text: #0D0D0D;
+      --accent: #C0392B;
+      --muted: #555;
+      --tag-bg: #EDE8E3;
+      --border: #C0392B;
+    }
+
+    @page {
+      size: A4;
+      margin: 1.5cm 1.8cm;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9.5px;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .cv {
+      max-width: 21cm;
+      margin: 0 auto;
+      padding: 1.5cm 1.8cm;
+      background: var(--bg);
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 18px;
+    }
+
+    .header-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .header-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .header-contact {
+      font-size: 9px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 14px;
+    }
+
+    .header-contact a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .header-contact a:hover {
+      color: var(--accent);
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      border-bottom: 0.5px solid var(--accent);
+      padding-bottom: 2px;
+      margin-bottom: 8px;
+    }
+
+    /* Summary */
+    .summary {
+      font-size: 9.5px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    /* Experience */
+    .entry {
+      margin-bottom: 10px;
+      page-break-inside: avoid;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .entry-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+
+    .entry-company {
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .entry-period {
+      font-size: 8.5px;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .entry-bullets {
+      list-style: none;
+      margin-bottom: 4px;
+    }
+
+    .entry-bullets li {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 1.5px;
+      font-size: 9px;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .entry-bullets li::before {
+      content: "–";
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .entry-stack {
+      font-size: 8.5px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* Projects */
+    .project {
+      margin-bottom: 8px;
+      page-break-inside: avoid;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .project-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+
+    .project-link {
+      font-size: 8.5px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .project-desc {
+      font-size: 9px;
+      color: var(--text);
+      margin-bottom: 2px;
+      line-height: 1.5;
+    }
+
+    .project-tags {
+      font-size: 8.5px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* Education */
+    .edu-entry {
+      margin-bottom: 6px;
+      page-break-inside: avoid;
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .edu-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+
+    .edu-org {
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .edu-period {
+      font-size: 8.5px;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .edu-tags {
+      font-size: 8.5px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* Skills row */
+    .skills-row {
+      margin-bottom: 4px;
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+    .skills-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-right: 4px;
+    }
+
+    .skills-value {
+      color: var(--text);
+    }
+
+    /* Tags */
+    .tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      padding: 1px 5px;
+      border-radius: 2px;
+      font-size: 8px;
+      color: var(--text);
+      margin: 1px 2px 1px 0;
+    }
+
+    @media print {
+      body {
+        background: var(--bg);
+      }
+
+      .cv {
+        padding: 0;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-name">Taja Vasilevich</div>
+      <div class="header-title">Analytics Engineer</div>
+      <div class="header-contact">
+        <span>Warsaw, Poland</span>
+        <a href="mailto:hiiii.taja@gmail.com">hiiii.taja@gmail.com</a>
+        <a href="https://github.com/wastaja" target="_blank">github.com/wastaja</a>
+        <a href="https://linkedin.com/in/taja-vasilevich" target="_blank">linkedin.com/in/taja-vasilevich</a>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section">
+      <div class="section-title">Professional Summary</div>
+      <p class="summary">
+        Analytics Engineer with 3+ years building data models, pipelines, and BI layers. Daily stack: SQL, Snowflake, dbt, PostgreSQL, Python, Power BI, GitHub Actions, Supabase. Experienced in Kimball dimensional modeling, bronze/silver/gold architecture, and cross-functional data work across Sales, Product, Marketing and CS. Currently deepening data engineering skills through hands-on projects and formal training.
+      </p>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <div class="section-title">Experience</div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Analytics Engineer</span>
+            <span class="entry-company"> — Just Join IT</span>
+          </div>
+          <div class="entry-period">Nov 2025 – Present</div>
+        </div>
+        <ul class="entry-bullets">
+          <li>Led data migration for merger of JustJoin IT and RocketJobs employer accounts — deduplicated ~50K employer panels and 60K non-unique users down to 24K panels and 40K unique users, ensuring zero data leakage across legally separate entities</li>
+          <li>Built event analytics layer — unpacking raw PostgreSQL events, designing tracking logic, syncing to Snowflake for downstream reporting</li>
+          <li>Architected Snowflake ↔ Supabase integration for internal BI migration; automated sync via GitHub Actions, managed full database schema in Supabase</li>
+          <li>Designed multi-layer data models in Snowflake using dbt (bronze/silver/gold), following Kimball dimensional modeling principles — fact and dimension tables powering cross-team reporting</li>
+          <li>Integrated data from CRM (Pipedrive), product analytics and internal operational datasets</li>
+        </ul>
+        <div class="entry-stack">Advanced SQL · Snowflake · dbt · Python · PostgreSQL · GitHub Actions · Supabase · APIs · Git</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Business Data Analyst</span>
+            <span class="entry-company"> — Just Join IT</span>
+          </div>
+          <div class="entry-period">Apr 2024 – Nov 2025</div>
+        </div>
+        <ul class="entry-bullets">
+          <li>Contributed analytics work to a product launch that drove 45% of company annual revenue in its first full year; partnered with Sales pre-launch analyzing customer needs alongside usage data</li>
+          <li>Designed churn calculation logic for a non-SaaS, package-based business model — defined criteria from scratch where standard SaaS metrics didn't apply</li>
+          <li>Built Power BI dashboards for marketing, sales and operational reporting</li>
+          <li>Developed early dbt models in Snowflake; cohort analysis, funnel tracking, performance analysis</li>
+          <li>Defined consistent business metrics and reporting logic across Sales and Marketing</li>
+        </ul>
+        <div class="entry-stack">SQL · Snowflake · dbt · Power BI · Google Sheets</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Response Rate Specialist</span>
+            <span class="entry-company"> — Just Join IT</span>
+          </div>
+          <div class="entry-period">Jul 2022 – Mar 2024</div>
+        </div>
+        <ul class="entry-bullets">
+          <li>Built internal data aggregation tool in Google Sheets consolidating large datasets from multiple job portals — filter-based interface enabling non-technical teams to extract insights independently</li>
+          <li>Designed Twitter engagement strategy: +20% response rate, +35% engagement</li>
+          <li>Campaign data analysis and user engagement metrics tracking</li>
+        </ul>
+        <div class="entry-stack">Google Analytics · Google Sheets · CRM</div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-title">Projects</div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-title">Squash Performance Analytics</span>
+          <a class="project-link" href="https://github.com/wastaja/squash-performance-analytics" target="_blank">github.com/wastaja</a>
+        </div>
+        <p class="project-desc">End-to-end pipeline (DuckDB + SQL + Python), layered data models (staging/marts), win probability prediction model, Makefile orchestration.</p>
+        <div class="project-tags">Python · DuckDB · SQL · Data Modeling</div>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-title">Cheese Analytics Pipeline</span>
+          <a class="project-link" href="https://github.com/wastaja/cheese-analytics-pipeline" target="_blank">github.com/wastaja</a>
+        </div>
+        <p class="project-desc">Web scraping (BeautifulSoup), feature engineering, similarity scoring model for product recommendations, modular Python + Makefile workflow.</p>
+        <div class="project-tags">Python · DuckDB · SQL · Web Scraping</div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-title">Education</div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <div>
+            <span class="edu-title">Data Engineer Course</span>
+            <span class="edu-org"> — Infoshare Academy</span>
+          </div>
+          <div class="edu-period">In progress, exp. Aug 2026</div>
+        </div>
+        <div class="edu-tags">PySpark · AWS · ETL · Apache Kafka · Apache Airflow · Docker · Databricks</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <div>
+            <span class="edu-title">Management, Master's</span>
+            <span class="edu-org"> — SWPS University Warsaw</span>
+          </div>
+          <div class="edu-period">In progress, exp. 2027</div>
+        </div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <div>
+            <span class="edu-title">Management &amp; Leadership, Bachelor's</span>
+            <span class="edu-org"> — SWPS University Warsaw</span>
+          </div>
+          <div class="edu-period">2020 – 2023</div>
+        </div>
+        <div class="edu-tags">Specialization: Project Management · Scrum · Agile · Managerial Finance</div>
+      </div>
+    </div>
+
+    <!-- Skills & Languages -->
+    <div class="section">
+      <div class="section-title">Skills &amp; Languages</div>
+      <div class="skills-row">
+        <span class="skills-label">Stack:</span>
+        <span class="skills-value">SQL · Snowflake · dbt · PostgreSQL · Python · Power BI · GitHub Actions · APIs · Supabase · Git</span>
+      </div>
+      <div class="skills-row">
+        <span class="skills-label">Languages:</span>
+        <span class="skills-value">Polish (Native) · Russian (Native) · English (Fluent) · French (Intermediate)</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
