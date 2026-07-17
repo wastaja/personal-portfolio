@@ -14,6 +14,7 @@ const roles = [
       "Integrated and modeled data from multiple sources including CRM (Pipedrive), product analytics and internal operational datasets",
     ],
     stack: ["Advanced SQL", "Snowflake", "dbt", "Python", "PostgreSQL", "GitHub Actions", "Supabase", "APIs", "Git"],
+    projectLink: { href: "#projects", text: "→ See Work Projects" },
   },
   {
     title: "Business Data Analyst",
@@ -125,6 +126,15 @@ const education = [
                     </li>
                   ))}
                 </ul>
+                {'projectLink' in role && role.projectLink && (
+                  <a
+                    href={role.projectLink.href}
+                    class="font-body mb-5 block text-[13px] transition-colors hover:underline"
+                    style="color: var(--color-accent); text-decoration: none;"
+                  >
+                    {role.projectLink.text}
+                  </a>
+                )}
                 <div class="flex flex-wrap gap-2">
                   {role.stack.map((tech) => (
                     <span

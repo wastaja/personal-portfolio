@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SquashGame from "../components/SquashGame.astro";
 ---
 
 <Layout
@@ -25,13 +24,6 @@ import SquashGame from "../components/SquashGame.astro";
       </p>
 
       <div class="mt-16 space-y-10 readme-body">
-
-        <div class="readme-section">
-          <h2>About me</h2>
-          <p>I'm an Analytics Engineer based in Warsaw, building data models, pipelines, and the infrastructure that turns raw data into decisions. I care about systems that actually get used — clean, documented, and understandable by the people who depend on them.</p>
-        </div>
-
-        <hr />
 
         <div class="readme-section">
           <h2>How I work</h2>
@@ -78,7 +70,7 @@ import SquashGame from "../components/SquashGame.astro";
 
         <div class="readme-section">
           <h2>Location, time zone &amp; work hours</h2>
-          <p>📍 Warsaw, Poland — GMT+1 🇵🇱</p>
+          <p>📍 Warsaw, Poland — <span id="tz-offset">GMT+1</span> 🇵🇱</p>
           <p>I try to keep regular 9-to-5 hours as much as possible — I think sustainable rhythms make for better work. That said, I'm flexible when the situation genuinely calls for it.</p>
           <p>My most productive window is roughly 10–4 pm, so if you need deep focus work from me, that's when you'll get my best.</p>
         </div>
@@ -87,38 +79,9 @@ import SquashGame from "../components/SquashGame.astro";
 
         <div class="readme-section">
           <h2>Outside of work</h2>
-          <p>I play squash, cook, and collect languages — I speak four and plan to add more. I'm genuinely fascinated by different cultures and love moving through the world rather than just observing it.</p>
+          <p>I play squash, cook, and collect languages — I speak four and plan to add more (German, Italian, and Portuguese are next in line). I'm genuinely fascinated by different cultures and love moving through the world rather than just observing it.</p>
           <p>India holds a special place — the country and the culture have a permanent spot in my heart.</p>
-          <p>Also: big cheese geek here. Ask me my favourite fun fact about cheese 🧀</p>
-        </div>
-
-        <hr />
-
-        <!-- Squash game -->
-        <div class="readme-section">
-          <h2>// just for fun</h2>
-          <p class="game-intro">I play squash. A lot. See if you can keep a rally going.</p>
-          <SquashGame />
-        </div>
-
-        <hr />
-
-        <!-- Spotify -->
-        <div class="readme-section">
-          <h2>// if you really want to get to know me</h2>
-          <div style="max-width: 600px;">
-            <iframe
-              data-testid="embed-iframe"
-              style="border-radius:12px"
-              src="https://open.spotify.com/embed/playlist/6EHYvjjMBQOAzvacat3kP9?utm_source=generator&theme=0&si=3be835063219471a"
-              width="100%"
-              height="352"
-              frameBorder="0"
-              allowfullscreen=""
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-            ></iframe>
-          </div>
+          <p>Also: big cheese geek here. Ask me my favourite fun fact about cheese. 🧀</p>
         </div>
 
         <hr />
@@ -126,6 +89,7 @@ import SquashGame from "../components/SquashGame.astro";
         <div class="readme-section">
           <h2>How to work with me</h2>
           <ul>
+            <li>Give me deadlines for everything — I love control and organise every task across my day, week, and month.</li>
             <li>Give me context and a goal — I'll figure out the path</li>
             <li>Frequent check-ins beat a big review at the end</li>
             <li>Trust me to deliver, then look at the results</li>
@@ -138,7 +102,7 @@ import SquashGame from "../components/SquashGame.astro";
 
         <div class="readme-section">
           <h2>Other quirks</h2>
-          <p>I sometimes go deep trying to solve something on my own before asking for help. I came to engineering relatively late and the self-taught instinct to "figure it out first" is still strong — I'm working on it. If you see me stuck, feel free to nudge me.</p>
+          <p>I sometimes go deep trying to solve something on my own before asking for help. My self-taught instinct to "figure it out first" is strong (I'm working on it). If you see me stuck, feel free to nudge me.</p>
           <p>When I'm thinking hard or under pressure, I can get very quiet and start frowning. It's not a mood — it's just how my brain looks from the outside when it's busy. Worth knowing upfront.</p>
           <p>Oh, and I might be one of the few people on earth who actually enjoys writing documentation. Yes, voluntarily. No, I don't know what's wrong with me either.</p>
         </div>
@@ -151,6 +115,23 @@ import SquashGame from "../components/SquashGame.astro";
     </div>
   </section>
 </Layout>
+
+<script>
+  // Dynamic Poland timezone offset: CET (UTC+1) in winter, CEST (UTC+2) in summer
+  function getLastSunday(year: number, month: number): Date {
+    // month is 0-indexed
+    const d = new Date(year, month + 1, 0); // last day of month
+    d.setDate(d.getDate() - d.getDay()); // back to last Sunday
+    return d;
+  }
+  const now = new Date();
+  const year = now.getFullYear();
+  const dstStart = getLastSunday(year, 2); // last Sunday of March
+  const dstEnd = getLastSunday(year, 9);   // last Sunday of October
+  const isDST = now >= dstStart && now < dstEnd;
+  const el = document.getElementById('tz-offset');
+  if (el) el.textContent = isDST ? 'GMT+2' : 'GMT+1';
+</script>
 
 <style>
   .readme-body {
@@ -167,6 +148,10 @@ import SquashGame from "../components/SquashGame.astro";
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--color-accent);
+    border-bottom-width: 1px !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: var(--color-accent) !important;
+    padding-bottom: 4px;
     margin-bottom: 16px;
   }
 
@@ -177,12 +162,6 @@ import SquashGame from "../components/SquashGame.astro";
 
   .readme-section p:last-child {
     margin-bottom: 0;
-  }
-
-  .readme-section p.game-intro {
-    margin-bottom: 16px;
-    color: var(--color-muted);
-    font-size: 15px;
   }
 
   .readme-section ul {
