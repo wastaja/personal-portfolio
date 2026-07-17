@@ -86,7 +86,7 @@
 
     /* Section */
     .section {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .section-title {
@@ -98,20 +98,55 @@
       color: var(--accent);
       border-bottom: 0.5px solid var(--accent);
       padding-bottom: 2px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     /* Summary */
     .summary {
       font-size: 8.5px;
       color: var(--text);
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
     /* Experience */
     .entry {
-      margin-bottom: 8px;
+      margin-bottom: 7px;
       page-break-inside: avoid;
+    }
+
+    /* Projects compact */
+    .project-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 2px;
+      font-size: 8.5px;
+      line-height: 1.4;
+      page-break-inside: avoid;
+    }
+
+    .project-row-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .project-row-body {
+      color: var(--muted);
+      font-size: 8px;
+    }
+
+    .project-row-body a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .project-row-private {
+      font-style: italic;
     }
 
     .entry-header {
@@ -318,6 +353,31 @@
           <li>Campaign data analysis and user engagement metrics tracking</li>
         </ul>
         <div class="entry-stack">Google Analytics · Google Sheets · CRM</div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <div class="section-title">Projects</div>
+
+      <div class="project-row">
+        <span class="project-row-title">Internal Analytics Dashboards</span>
+        <span class="project-row-body"><span class="project-row-private">Just Join IT · code private</span> — Full data architecture (Snowflake → Supabase → Lovable) for two internal dashboards replacing Google Sheets. GitHub Actions sync, RLS, audit logging. <span style="font-style:italic;">Snowflake · dbt · Supabase · GitHub Actions · Lovable · Python</span></span>
+      </div>
+
+      <div class="project-row">
+        <span class="project-row-title">Account Merger — Data Migration</span>
+        <span class="project-row-body"><span class="project-row-private">Just Join IT · code private</span> — Deduplicated ~50K employer panels and 60K users → 24K panels, 40K unique users across two platforms. Zero data leakage. <span style="font-style:italic;">SQL · Snowflake · dbt · PostgreSQL</span></span>
+      </div>
+
+      <div class="project-row">
+        <span class="project-row-title">Squash Performance Analytics</span>
+        <span class="project-row-body"><a href="https://github.com/wastaja/squash-performance-analytics">github.com/wastaja</a> — End-to-end pipeline, layered models (staging/marts), win probability model. <span style="font-style:italic;">Python · DuckDB · SQL</span></span>
+      </div>
+
+      <div class="project-row">
+        <span class="project-row-title">Cheese Analytics Pipeline</span>
+        <span class="project-row-body"><a href="https://github.com/wastaja/cheese-analytics-pipeline">github.com/wastaja</a> — Web scraping, feature engineering, similarity scoring model for product recommendations. <span style="font-style:italic;">Python · DuckDB · SQL · BeautifulSoup</span></span>
       </div>
     </div>
 
