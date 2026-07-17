@@ -1,5 +1,5 @@
 ---
-const projects = [
+const personalProjects = [
   {
     title: "Squash Performance Analytics",
     description:
@@ -13,6 +13,25 @@ const projects = [
       "Data pipeline to collect and analyze product data using Python, SQL, and DuckDB. Web scraping with requests + BeautifulSoup extracts structured data from a real-world website. Includes data cleaning, standardization, feature engineering, and a similarity scoring model for product recommendations. Modular Python scripts + Makefile orchestration.",
     tags: ["Python", "DuckDB", "SQL", "Web Scraping", "BeautifulSoup"],
     href: "https://github.com/wastaja/cheese-analytics-pipeline",
+  },
+];
+
+const workProjects = [
+  {
+    title: "Internal Analytics Dashboards",
+    period: "2025–2026",
+    description:
+      "Built two production internal dashboards replacing legacy Google Sheets workflows for Sales and Customer Success teams. Designed full data architecture: Snowflake (dbt models, bronze/silver/gold) → Supabase (PostgreSQL + RLS + Auth) → Lovable (React frontend). Automated daily Snowflake → Supabase sync via GitHub Actions. Implemented row-level security, audit logging, and allowlist-based RPC protection. Built virtualized UI handling ~26K rows with client-side sorting, multi-level filtering, and bulk edit. Integrated webhook pipeline: Supabase → Make → Google Sheets for real-time audit trail.",
+    tags: ["Snowflake", "dbt", "Supabase", "PostgreSQL", "GitHub Actions", "Lovable", "Python", "Make"],
+    note: "Code private — internal tooling",
+  },
+  {
+    title: "Account Merger — Data Migration",
+    period: "2024–2025",
+    description:
+      "Led the data side of a full merger between two separate employer account systems (JustJoin IT + RocketJobs). Deduplicated ~50K employer panels and 60K non-unique users → 24K panels, 40K unique users. Ensured zero data leakage between legally separate entities. Coordinated with CS and Sales teams for edge cases where data signals were ambiguous.",
+    tags: ["SQL", "Snowflake", "dbt", "PostgreSQL", "Data Migration"],
+    note: "Code private — production data migration",
   },
 ];
 ---
@@ -32,9 +51,16 @@ const projects = [
       Projects
     </h2>
 
-    <div class="grid gap-6 md:grid-cols-2">
+    <!-- Personal Projects -->
+    <h3
+      class="font-heading mb-6 text-sm font-semibold tracking-[0.2em] uppercase"
+      style="color: var(--color-muted);"
+    >
+      Personal Projects
+    </h3>
+    <div class="mb-14 grid gap-6 md:grid-cols-2">
       {
-        projects.map((project) => (
+        personalProjects.map((project) => (
           <a
             href={project.href}
             target="_blank"
@@ -68,12 +94,73 @@ const projects = [
               class="font-body mt-auto inline-flex items-center gap-2 text-sm font-semibold tracking-wide uppercase transition-opacity"
               style="color: var(--color-accent);"
             >
-              View Project
+              View on GitHub
               <span class="transition-transform group-hover:translate-x-1">
                 &rarr;
               </span>
             </span>
           </a>
+        ))
+      }
+    </div>
+
+    <!-- Work Projects -->
+    <h3
+      class="font-heading mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
+      style="color: var(--color-muted);"
+    >
+      Work Projects
+    </h3>
+    <p
+      class="font-body mb-6 text-sm"
+      style="color: var(--color-muted);"
+    >
+      Internal tools built at Just Join IT. Code is private — descriptions cover architecture and approach.
+    </p>
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        workProjects.map((project) => (
+          <div
+            class="flex h-full flex-col rounded-2xl border p-8"
+            style="border-color: var(--color-border);"
+          >
+            <div class="mb-4 flex items-baseline gap-3">
+              <h3
+                class="font-heading text-3xl font-bold tracking-tight uppercase"
+                style="color: var(--color-text);"
+              >
+                {project.title}
+              </h3>
+              <span
+                class="font-body text-sm"
+                style="color: var(--color-muted);"
+              >
+                {project.period}
+              </span>
+            </div>
+            <p
+              class="font-body mb-6 text-base leading-relaxed"
+              style="color: var(--color-muted);"
+            >
+              {project.description}
+            </p>
+            <div class="mb-6 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  class="font-body rounded-full border px-3 py-1 text-xs"
+                  style="border-color: var(--color-border); color: var(--color-text);"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <span
+              class="font-body mt-auto text-sm"
+              style="color: var(--color-muted); font-style: italic;"
+            >
+              {project.note}
+            </span>
+          </div>
         ))
       }
     </div>

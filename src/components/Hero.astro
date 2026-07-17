@@ -84,3 +84,10 @@
     </p>
   </div>
 </section>
+
+<script>
+  import { track } from "@vercel/analytics";
+  document.querySelector('a[download]')?.addEventListener("click", () => {
+    track("cv_download");
+  });
+</script>

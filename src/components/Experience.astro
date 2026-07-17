@@ -6,10 +6,11 @@ const roles = [
     period: "Nov 2025 — Present",
     bullets: [
       "Led data migration for merger of JustJoin IT and RocketJobs employer accounts — deduplicated ~50K employer panels and 60K non-unique users down to 24K panels and 40K unique users, ensuring zero data leakage across legally separate entities; coordinated handoff tasks with CS and Sales teams where data alone was insufficient",
-      "Built and maintained event analytics layer — unpacking raw PostgreSQL event data, designing tracking logic, and syncing to Snowflake for downstream reporting",
-      "Architected Snowflake ↔ Supabase integration for internal BI tooling migration; set up automated sync via GitHub Actions and managed full database schema in Supabase",
-      "Designed and implemented multi-layer data models in Snowflake using dbt (bronze / silver / gold architecture), building the analytical foundation for internal BI dashboards and reporting",
-      "Developed SQL transformation layers following Kimball dimensional modeling principles — fact and dimension tables powering Sales, Product, Marketing and Customer Success reporting",
+      "Designed and implemented end-to-end reporting architecture: Snowflake (dbt models) → Supabase (PostgreSQL + API layer) → Lovable (React frontend), replacing Power BI with a scalable self-serve stack; automated daily sync via GitHub Actions",
+      "Built event analytics layer — unpacking raw PostgreSQL events, designing tracking logic, syncing to Snowflake for downstream reporting",
+      "Designed multi-layer data models in Snowflake using dbt (bronze/silver/gold architecture), following Kimball dimensional modeling principles — fact and dimension tables powering cross-team reporting",
+      "Executed production dbt migration of core mapping key — full dependency audit across repo, safe rollout across two PRs, historical backfill using last_value ignore nulls window functions",
+      "Reduced technical debt by refactoring duplicated logic across dbt models into shared intermediate (int_*) layer",
       "Integrated and modeled data from multiple sources including CRM (Pipedrive), product analytics and internal operational datasets",
     ],
     stack: ["Advanced SQL", "Snowflake", "dbt", "Python", "PostgreSQL", "GitHub Actions", "Supabase", "APIs", "Git"],
@@ -19,8 +20,8 @@ const roles = [
     company: "Just Join IT",
     period: "Apr 2024 — Oct 2025",
     bullets: [
-      "Contributed data and analytics work to a new product launch that drove 45% of company annual revenue in its first full year; worked closely with Sales throughout pre-launch — analyzing customer needs alongside usage data to shape go-to-market decisions",
-      "Designed and implemented churn calculation logic for a non-SaaS business model (package-based, no subscription) — defined churn criteria from scratch for clients with active packages expiring by usage or time, where standard SaaS metrics didn't apply",
+      "Contributed analytics work to a product launch that drove 45% of company annual revenue in its first full year; partnered with Sales pre-launch — analyzing customer needs alongside usage data to shape go-to-market decisions",
+      "Designed churn calculation logic for a non-SaaS, package-based business model — defined criteria from scratch for clients with active packages expiring by usage or time, where standard SaaS metrics didn't apply",
       "Built Power BI dashboards for marketing, sales and operational reporting",
       "Developed early dbt models in Snowflake contributing to the company's analytical data layer",
       "Cohort analysis, funnel tracking and performance analysis to identify growth opportunities and improve campaign effectiveness",
@@ -59,7 +60,7 @@ const education = [
     title: "Management & Leadership, Bachelor's",
     org: "SWPS University Warsaw",
     period: "2020 — 2023",
-    stack: ["Project Management", "Scrum", "Agile", "Managerial Finance", "Stakeholder Communication"],
+    stack: ["Project Management", "Scrum", "Agile", "Project Portfolio Management", "Managerial Finance", "Team Coordination"],
   },
 ];
 ---
