@@ -1,0 +1,189 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="README.md — Taja Vasilevich"
+  description="How I work, think, and what makes me tick."
+>
+  <section class="px-6 pt-32 pb-20 md:px-10">
+    <div class="mx-auto max-w-[720px]">
+
+      <!-- Hero -->
+      <h1
+        class="font-heading text-[14vw] leading-[0.85] font-black tracking-tight uppercase md:text-[8rem]"
+        style="color: var(--color-text);"
+      >
+        README.md
+      </h1>
+      <p
+        class="font-body mt-6 text-lg md:text-xl"
+        style="color: var(--color-muted);"
+      >
+        How I work, think, and what makes me tick.
+      </p>
+
+      <div class="mt-16 space-y-10 readme-body">
+
+        <div class="readme-section">
+          <h2>About me</h2>
+          <p>I'm an Analytics Engineer based in Warsaw, building data models, pipelines, and the infrastructure that turns raw data into decisions. I care about systems that actually get used — clean, documented, and understandable by the people who depend on them.</p>
+        </div>
+
+        <hr />
+
+        <div class="readme-section">
+          <h2>How I work</h2>
+          <p>I ask a lot of questions upfront. Not to slow things down — but because I'd rather spend 30 minutes understanding the real problem than 3 days solving the wrong one. Definitions matter. Context matters. I won't start until I know what "done" actually means.</p>
+          <p>I'm also the person you bring in when nobody has done it before. New tool, unfamiliar stack, blank-slate problem? Give it to me. I'll come back with something that works.</p>
+        </div>
+
+        <hr />
+
+        <div class="readme-section">
+          <h2>What I'm good at</h2>
+          <ul>
+            <li>Translating technical complexity into something non-technical stakeholders can act on</li>
+            <li>Seeing the systemic problem underneath the reported symptom</li>
+            <li>Owning things end-to-end — from data model to dashboard to the person using it</li>
+            <li>Working across teams: I've collaborated with Sales, CS, Product, and Dev, and I know how to speak each language</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="readme-section">
+          <h2>What I'm learning</h2>
+          <p>Currently going deep on data engineering — Airflow, Spark, and cloud infrastructure. I want to own the full pipeline, not just the analytical layer on top of it.</p>
+        </div>
+
+        <hr />
+
+        <div class="readme-section">
+          <h2>Feedback</h2>
+          <p>I'm very open to direct, constructive feedback — please don't feel the need to wrap it in compliments or caveats. Just say it.</p>
+          <p>On the flip side, I'm actively working on giving feedback more proactively. If you feel like I should have said something and didn't — prompt me. I won't be offended, and I'll probably have thoughts.</p>
+        </div>
+
+        <hr />
+
+        <div class="readme-section">
+          <h2>Communication</h2>
+          <p>I prefer to keep conversations close to the context they belong in. If something relates to an existing issue, doc, or RFC — let's talk there, not in a separate thread that gets lost. That said, I use Slack's "Save for later" heavily and will often bring things back to the right place eventually.</p>
+          <p>When speaking verbally, I sometimes take a while to get to the point. If you notice this — call me out. I'm actively working on it and won't take it personally.</p>
+        </div>
+
+        <hr />
+
+        <div class="readme-section">
+          <h2>Location, time zone &amp; work hours</h2>
+          <p>📍 Warsaw, Poland — GMT+1 🇵🇱</p>
+          <p>I try to keep regular 9-to-5 hours as much as possible — I think sustainable rhythms make for better work. That said, I'm flexible when the situation genuinely calls for it.</p>
+          <p>My most productive window is roughly 10–4 pm, so if you need deep focus work from me, that's when you'll get my best.</p>
+        </div>
+
+        <hr />
+
+        <div class="readme-section">
+          <h2>Outside of work</h2>
+          <p>I play squash, cook, and collect languages — I speak four and plan to add more. I'm genuinely fascinated by different cultures and love moving through the world rather than just observing it.</p>
+          <p>India holds a special place — the country and the culture have a permanent spot in my heart.</p>
+          <p>Also: big cheese geek here. Ask me my favourite fun fact about cheese 🧀</p>
+        </div>
+
+        <hr />
+
+        <div class="readme-section">
+          <h2>How to work with me</h2>
+          <ul>
+            <li>Give me context and a goal — I'll figure out the path</li>
+            <li>Frequent check-ins beat a big review at the end</li>
+            <li>Trust me to deliver, then look at the results</li>
+            <li>I love structure: calendar blocks, clear task statuses, async updates</li>
+            <li>I use Slack emoji statuses religiously 👀</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="readme-section">
+          <h2>Other quirks</h2>
+          <p>I sometimes go deep trying to solve something on my own before asking for help. I came to engineering relatively late and the self-taught instinct to "figure it out first" is still strong — I'm working on it. If you see me stuck, feel free to nudge me.</p>
+          <p>When I'm thinking hard or under pressure, I can get very quiet and start frowning. It's not a mood — it's just how my brain looks from the outside when it's busy. Worth knowing upfront.</p>
+          <p>Oh, and I might be one of the few people on earth who actually enjoys writing documentation. Yes, voluntarily. No, I don't know what's wrong with me either.</p>
+        </div>
+
+        <hr />
+
+        <p class="font-body text-sm" style="color: var(--color-muted);">Last updated: July 2026</p>
+
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .readme-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .readme-section h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    border-bottom: 0.5px solid var(--color-accent);
+    padding-bottom: 4px;
+    margin-bottom: 16px;
+  }
+
+  .readme-section p {
+    color: var(--color-text);
+    margin-bottom: 12px;
+  }
+
+  .readme-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .readme-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .readme-section ul li {
+    display: flex;
+    gap: 12px;
+    color: var(--color-text);
+  }
+
+  .readme-section ul li::before {
+    content: "—";
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #888580;
+    margin: 0;
+    opacity: 0.3;
+  }
+
+  code {
+    font-family: monospace;
+    font-size: 0.9em;
+    background-color: var(--color-border);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+</style>
