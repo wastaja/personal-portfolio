@@ -15,25 +15,6 @@ const personalProjects = [
     href: "https://github.com/wastaja/cheese-analytics-pipeline",
   },
 ];
-
-const workProjects = [
-  {
-    title: "Internal Analytics Dashboards",
-    period: "2025–2026",
-    description:
-      "Built two production internal dashboards replacing legacy Google Sheets workflows for Sales and Customer Success teams. Designed full data architecture: Snowflake (dbt models, bronze/silver/gold) → Supabase (PostgreSQL + RLS + Auth) → Lovable (React frontend). Automated daily Snowflake → Supabase sync via GitHub Actions. Implemented row-level security, audit logging, and allowlist-based RPC protection. Built virtualized UI handling ~26K rows with client-side sorting, multi-level filtering, and bulk edit. Integrated webhook pipeline: Supabase → Make → Google Sheets for real-time audit trail.",
-    tags: ["Snowflake", "dbt", "Supabase", "PostgreSQL", "GitHub Actions", "Lovable", "Python", "Make"],
-    note: "Code private — internal tooling",
-  },
-  {
-    title: "Account Merger — Data Migration",
-    period: "2024–2025",
-    description:
-      "Led the data side of a full merger between two separate employer account systems (JustJoin IT + RocketJobs). Deduplicated ~50K employer panels and 60K non-unique users → 24K panels, 40K unique users. Ensured zero data leakage between legally separate entities. Coordinated with CS and Sales teams for edge cases where data signals were ambiguous.",
-    tags: ["SQL", "Snowflake", "dbt", "PostgreSQL", "Data Migration"],
-    note: "Code private — production data migration",
-  },
-];
 ---
 
 <section id="projects" class="px-6 py-28 md:px-10">
@@ -58,7 +39,7 @@ const workProjects = [
     >
       Personal Projects
     </h3>
-    <div class="mb-14 grid gap-6 md:grid-cols-2">
+    <div class="mb-20 grid gap-6 md:grid-cols-2">
       {
         personalProjects.map((project) => (
           <a
@@ -105,64 +86,134 @@ const workProjects = [
     </div>
 
     <!-- Work Projects -->
-    <h3
-      class="font-heading mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
-      style="color: var(--color-muted);"
-    >
-      Work Projects
-    </h3>
-    <p
-      class="font-body mb-6 text-sm"
-      style="color: var(--color-muted);"
-    >
-      Internal tools built at Just Join IT. Code is private — descriptions cover architecture and approach.
-    </p>
-    <div class="grid gap-6 md:grid-cols-2">
-      {
-        workProjects.map((project) => (
-          <div
-            class="flex h-full flex-col rounded-2xl border p-8"
-            style="border-color: var(--color-border);"
+    <div id="work-projects">
+      <h3
+        class="font-heading mb-2 text-sm font-semibold tracking-[0.2em] uppercase"
+        style="color: var(--color-muted);"
+      >
+        Work Projects
+      </h3>
+      <p
+        class="font-body mb-8 text-sm"
+        style="color: var(--color-muted);"
+      >
+        Internal tools built at Just Join IT. Code is private — descriptions cover architecture and approach.
+      </p>
+
+      <!-- Internal Analytics Dashboards -->
+      <div class="mb-6 rounded-2xl border p-8" style="border-color: var(--color-border);">
+        <div class="mb-5 flex items-baseline gap-3">
+          <h3
+            class="font-heading text-3xl font-bold tracking-tight uppercase"
+            style="color: var(--color-text);"
           >
-            <div class="mb-4 flex items-baseline gap-3">
-              <h3
-                class="font-heading text-3xl font-bold tracking-tight uppercase"
-                style="color: var(--color-text);"
-              >
-                {project.title}
-              </h3>
-              <span
-                class="font-body text-sm"
-                style="color: var(--color-muted);"
-              >
-                {project.period}
-              </span>
-            </div>
-            <p
-              class="font-body mb-6 text-base leading-relaxed"
-              style="color: var(--color-muted);"
-            >
-              {project.description}
-            </p>
-            <div class="mb-6 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span
-                  class="font-body rounded-full border px-3 py-1 text-xs"
-                  style="border-color: var(--color-border); color: var(--color-text);"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            Internal Analytics Dashboards
+          </h3>
+          <span class="font-body text-sm" style="color: var(--color-muted);">Just Join IT, 2025–2026</span>
+        </div>
+
+        <p class="font-body mb-1 text-sm font-semibold uppercase tracking-wide" style="color: var(--color-muted);">Context</p>
+        <p class="font-body mb-4 text-base leading-relaxed" style="color: var(--color-muted);">
+          Sales and Customer Success teams were managing NLA client data in formula-heavy Google Sheets that broke at scale — slow, unsortable, no audit trail.
+        </p>
+
+        <p class="font-body mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--color-muted);">What I built</p>
+        <p class="font-body mb-3 text-base" style="color: var(--color-muted);">Two production internal dashboards replacing the legacy workflow entirely.</p>
+        <ul class="mb-4 space-y-2">
+          <li class="font-body flex gap-3 text-base leading-relaxed" style="color: var(--color-text);">
+            <span style="color: var(--color-accent); flex-shrink: 0;">—</span>
+            <span>Designed full data architecture: Snowflake (dbt models, bronze/silver/gold) → Supabase (PostgreSQL + RLS + Auth) → Lovable (React frontend)</span>
+          </li>
+          <li class="font-body flex gap-3 text-base leading-relaxed" style="color: var(--color-text);">
+            <span style="color: var(--color-accent); flex-shrink: 0;">—</span>
+            <span>Automated daily Snowflake → Supabase sync via GitHub Actions (drop-recreate strategy with automatic schema drift propagation)</span>
+          </li>
+          <li class="font-body flex gap-3 text-base leading-relaxed" style="color: var(--color-text);">
+            <span style="color: var(--color-accent); flex-shrink: 0;">—</span>
+            <span>Implemented row-level security, audit logging, and allowlist-based RPC protection</span>
+          </li>
+          <li class="font-body flex gap-3 text-base leading-relaxed" style="color: var(--color-text);">
+            <span style="color: var(--color-accent); flex-shrink: 0;">—</span>
+            <span>Built virtualized UI handling ~26K rows with client-side sorting, multi-level filtering, and bulk edit with CSV import</span>
+          </li>
+          <li class="font-body flex gap-3 text-base leading-relaxed" style="color: var(--color-text);">
+            <span style="color: var(--color-accent); flex-shrink: 0;">—</span>
+            <span>Integrated webhook pipeline: Supabase → Make → Google Sheets for real-time audit trail</span>
+          </li>
+        </ul>
+
+        <p class="font-body mb-1 text-sm font-semibold uppercase tracking-wide" style="color: var(--color-muted);">Outcome</p>
+        <p class="font-body mb-5 text-base leading-relaxed" style="color: var(--color-muted);">
+          Replaced manual spreadsheet workflows for two teams; priorities and changes fully auditable per user.
+        </p>
+
+        <div class="mb-4 flex flex-wrap gap-2">
+          {["Snowflake", "dbt", "Supabase", "PostgreSQL", "GitHub Actions", "Lovable", "Python", "Make"].map((tag) => (
             <span
-              class="font-body mt-auto text-sm"
-              style="color: var(--color-muted); font-style: italic;"
+              class="font-body rounded-full border px-3 py-1 text-xs"
+              style="border-color: var(--color-border); color: var(--color-text);"
             >
-              {project.note}
+              {tag}
             </span>
-          </div>
-        ))
-      }
+          ))}
+        </div>
+        <p class="font-body text-sm" style="color: var(--color-muted); font-style: italic;">Code private — internal tooling</p>
+      </div>
+
+      <!-- Account Merger -->
+      <div class="rounded-2xl border p-8" style="border-color: var(--color-border);">
+        <div class="mb-5 flex items-baseline gap-3">
+          <h3
+            class="font-heading text-3xl font-bold tracking-tight uppercase"
+            style="color: var(--color-text);"
+          >
+            Account Merger — Data Migration
+          </h3>
+          <span class="font-body text-sm" style="color: var(--color-muted);">2024–2025</span>
+        </div>
+
+        <p class="font-body mb-1 text-sm font-semibold uppercase tracking-wide" style="color: var(--color-muted);">Context</p>
+        <p class="font-body mb-4 text-base leading-relaxed" style="color: var(--color-muted);">
+          JustJoin IT acquired RocketJobs.pl. Both platforms had separate employer accounts — recruiters needed a single login. Merging incorrectly would mean one employer seeing another's data — a serious legal and trust issue.
+        </p>
+
+        <p class="font-body mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--color-muted);">What I did</p>
+        <ul class="mb-4 space-y-2">
+          <li class="font-body flex gap-3 text-base leading-relaxed" style="color: var(--color-text);">
+            <span style="color: var(--color-accent); flex-shrink: 0;">—</span>
+            <span>Audited and deduplicated ~50K employer panels and 60K non-unique users → 24K panels, 40K unique users</span>
+          </li>
+          <li class="font-body flex gap-3 text-base leading-relaxed" style="color: var(--color-text);">
+            <span style="color: var(--color-accent); flex-shrink: 0;">—</span>
+            <span>Designed deduplication logic to identify true unique entities across two systems with different data models</span>
+          </li>
+          <li class="font-body flex gap-3 text-base leading-relaxed" style="color: var(--color-text);">
+            <span style="color: var(--color-accent); flex-shrink: 0;">—</span>
+            <span>Ensured zero data leakage between legally separate entities throughout the migration</span>
+          </li>
+          <li class="font-body flex gap-3 text-base leading-relaxed" style="color: var(--color-text);">
+            <span style="color: var(--color-accent); flex-shrink: 0;">—</span>
+            <span>Coordinated with CS and Sales teams for edge cases where data signals were ambiguous — delegating manual verification where data alone wasn't enough</span>
+          </li>
+        </ul>
+
+        <p class="font-body mb-1 text-sm font-semibold uppercase tracking-wide" style="color: var(--color-muted);">Outcome</p>
+        <p class="font-body mb-5 text-base leading-relaxed" style="color: var(--color-muted);">
+          Clean, merged account structure with full data isolation — migration completed without incidents.
+        </p>
+
+        <div class="mb-4 flex flex-wrap gap-2">
+          {["SQL", "Snowflake", "dbt", "PostgreSQL", "Data Migration"].map((tag) => (
+            <span
+              class="font-body rounded-full border px-3 py-1 text-xs"
+              style="border-color: var(--color-border); color: var(--color-text);"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <p class="font-body text-sm" style="color: var(--color-muted); font-style: italic;">Code private — production data migration</p>
+      </div>
     </div>
   </div>
 </section>
