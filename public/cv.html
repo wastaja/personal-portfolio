@@ -20,20 +20,19 @@
       --accent: #C0392B;
       --muted: #888580;
       --tag-bg: #EDE8E3;
-      --border: #C0392B;
     }
 
     @page {
       size: A4;
-      margin: 1.5cm 1.8cm;
+      margin: 0;
     }
 
     html, body {
       background: var(--bg);
       color: var(--text);
       font-family: 'DM Sans', sans-serif;
-      font-size: 9.5px;
-      line-height: 1.5;
+      font-size: 8.5px;
+      line-height: 1.4;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -43,40 +42,41 @@
       margin: 0 auto;
       padding: 1.5cm 1.8cm;
       background: var(--bg);
+      min-height: 29.7cm;
     }
 
     /* Header */
     .header {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .header-name {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--text);
       letter-spacing: 0.02em;
       text-transform: uppercase;
       line-height: 1;
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
 
     .header-title {
       font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 500;
       color: var(--accent);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .header-contact {
-      font-size: 9px;
+      font-size: 8px;
       color: var(--muted);
       display: flex;
       flex-wrap: wrap;
-      gap: 0 14px;
+      gap: 0 12px;
     }
 
     .header-contact a {
@@ -86,31 +86,31 @@
 
     /* Section */
     .section {
-      margin-bottom: 13px;
+      margin-bottom: 10px;
     }
 
     .section-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       color: var(--accent);
       border-bottom: 0.5px solid var(--accent);
       padding-bottom: 2px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     /* Summary */
     .summary {
-      font-size: 9.5px;
+      font-size: 8.5px;
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.45;
     }
 
     /* Experience */
     .entry {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       page-break-inside: avoid;
     }
 
@@ -123,7 +123,7 @@
 
     .entry-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -136,7 +136,7 @@
     }
 
     .entry-period {
-      font-size: 8.5px;
+      font-size: 8px;
       color: var(--muted);
       white-space: nowrap;
       flex-shrink: 0;
@@ -144,15 +144,15 @@
 
     .entry-bullets {
       list-style: none;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .entry-bullets li {
       display: flex;
       gap: 5px;
-      margin-bottom: 1.5px;
-      font-size: 9px;
-      line-height: 1.5;
+      margin-bottom: 1px;
+      font-size: 8.5px;
+      line-height: 1.4;
       color: var(--text);
     }
 
@@ -163,68 +163,14 @@
     }
 
     .entry-stack {
-      font-size: 8.5px;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    /* Projects */
-    .project {
-      margin-bottom: 8px;
-      page-break-inside: avoid;
-    }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 1px;
-    }
-
-    .project-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text);
-    }
-
-    .project-meta {
-      font-size: 8.5px;
-      color: var(--muted);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .project-meta a {
-      color: var(--muted);
-      text-decoration: none;
-    }
-
-    .project-private {
-      font-size: 8.5px;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .project-desc {
-      font-size: 9px;
-      color: var(--text);
-      margin-bottom: 2px;
-      line-height: 1.5;
-    }
-
-    .project-tags {
-      font-size: 8.5px;
+      font-size: 8px;
       color: var(--muted);
       font-style: italic;
     }
 
     /* Education */
     .edu-entry {
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       page-break-inside: avoid;
     }
 
@@ -237,7 +183,7 @@
 
     .edu-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -250,23 +196,23 @@
     }
 
     .edu-period {
-      font-size: 8.5px;
+      font-size: 8px;
       color: var(--muted);
       white-space: nowrap;
       flex-shrink: 0;
     }
 
     .edu-tags {
-      font-size: 8.5px;
+      font-size: 8px;
       color: var(--muted);
       font-style: italic;
     }
 
     /* Skills row */
     .skills-row {
-      margin-bottom: 4px;
-      font-size: 9px;
-      line-height: 1.6;
+      margin-bottom: 3px;
+      font-size: 8.5px;
+      line-height: 1.5;
     }
 
     .skills-label {
@@ -282,25 +228,15 @@
       color: var(--text);
     }
 
-    /* Tags */
-    .tag {
-      display: inline-block;
-      background: var(--tag-bg);
-      padding: 1px 5px;
-      border-radius: 2px;
-      font-size: 8px;
-      color: var(--text);
-      margin: 1px 2px 1px 0;
-    }
-
     @media print {
-      body {
+      html, body {
         background: var(--bg);
       }
 
       .cv {
-        padding: 0;
+        padding: 1.5cm 1.8cm;
         max-width: none;
+        min-height: auto;
       }
     }
   </style>
@@ -343,11 +279,9 @@
         </div>
         <ul class="entry-bullets">
           <li>Led high-impact data projects including two-brand account merger (JustJoin IT + RocketJobs.pl) and full BI stack migration (Snowflake → Supabase → Lovable), replacing Power BI with a scalable self-serve stack; automated daily sync via GitHub Actions</li>
-          <li>Built event analytics layer — unpacking raw PostgreSQL events, designing tracking logic, syncing to Snowflake for downstream reporting</li>
           <li>Designed multi-layer data models in Snowflake using dbt (bronze/silver/gold), following Kimball dimensional modeling principles — fact and dimension tables powering cross-team reporting</li>
-          <li>Executed production dbt migration of core mapping key — full dependency audit across repo, safe rollout, historical backfill using last_value ignore nulls window functions</li>
-          <li>Reduced technical debt by refactoring duplicated logic across dbt models into shared intermediate (int_*) layer</li>
-          <li>Integrated data from CRM (Pipedrive), product analytics and internal operational datasets</li>
+          <li>Built event analytics layer — unpacking raw PostgreSQL events, designing tracking logic, syncing to Snowflake for downstream reporting</li>
+          <li>Reduced technical debt by refactoring duplicated logic across dbt models into shared intermediate (int_*) layer; integrated data from CRM (Pipedrive), product analytics and internal operational datasets</li>
         </ul>
         <div class="entry-stack">Advanced SQL · Snowflake · dbt · Python · PostgreSQL · GitHub Actions · Supabase · APIs · Git</div>
       </div>
@@ -384,47 +318,6 @@
           <li>Campaign data analysis and user engagement metrics tracking</li>
         </ul>
         <div class="entry-stack">Google Analytics · Google Sheets · CRM</div>
-      </div>
-    </div>
-
-    <!-- Projects -->
-    <div class="section">
-      <div class="section-title">Projects</div>
-
-      <div class="project">
-        <div class="project-header">
-          <span class="project-title">Internal Analytics Dashboards</span>
-          <span class="project-meta">Just Join IT, 2025–2026 · <span class="project-private">code private</span></span>
-        </div>
-        <p class="project-desc">Designed full data architecture (Snowflake → Supabase → Lovable) for two production internal dashboards replacing legacy Google Sheets workflows. Automated daily sync via GitHub Actions, implemented RLS, audit logging, and webhook pipeline to Google Sheets.</p>
-        <div class="project-tags">Snowflake · dbt · Supabase · PostgreSQL · GitHub Actions · Lovable · Python · Make</div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <span class="project-title">Account Merger — Data Migration</span>
-          <span class="project-meta">Just Join IT, 2025–2026 · <span class="project-private">code private</span></span>
-        </div>
-        <p class="project-desc">Led data migration merging two separate employer account systems. Deduplicated ~50K employer panels and 60K non-unique users → 24K panels, 40K unique users. Ensured zero data leakage across legally separate entities.</p>
-        <div class="project-tags">SQL · Snowflake · dbt · PostgreSQL · Data Migration</div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <span class="project-title">Squash Performance Analytics</span>
-          <span class="project-meta"><a href="https://github.com/wastaja/squash-performance-analytics" target="_blank">github.com/wastaja</a></span>
-        </div>
-        <p class="project-desc">End-to-end pipeline (DuckDB + SQL + Python), layered data models (staging/marts), win probability prediction model, Makefile orchestration.</p>
-        <div class="project-tags">Python · DuckDB · SQL · Data Modeling</div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <span class="project-title">Cheese Analytics Pipeline</span>
-          <span class="project-meta"><a href="https://github.com/wastaja/cheese-analytics-pipeline" target="_blank">github.com/wastaja</a></span>
-        </div>
-        <p class="project-desc">Web scraping (BeautifulSoup), feature engineering, similarity scoring model for product recommendations, modular Python + Makefile workflow.</p>
-        <div class="project-tags">Python · DuckDB · SQL · Web Scraping</div>
       </div>
     </div>
 
@@ -478,7 +371,7 @@
       </div>
     </div>
 
-    <p style="font-size: 8px; color: #888580; margin-top: 16px;">I consent to my personal data being processed for recruitment purposes.</p>
+    <p style="font-size: 8px; color: #888580; margin-top: 14px;">I consent to my personal data being processed for recruitment purposes.</p>
 
   </div>
 </body>
