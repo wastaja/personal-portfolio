@@ -1,0 +1,208 @@
+<div class="squash-wrapper">
+  <canvas id="squashCanvas"></canvas>
+  <p id="bestScore" class="best-score">best rally: 0 hits</p>
+</div>
+
+<style>
+  .squash-wrapper {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  #squashCanvas {
+    display: block;
+    width: 100%;
+    height: 300px;
+    cursor: none;
+    border: 1px solid #88858040;
+    border-radius: 4px;
+  }
+
+  .best-score {
+    margin-top: 8px;
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--color-muted, #888580);
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById('squashCanvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  const bestScoreEl = document.getElementById('bestScore')!;
+
+  // HiDPI setup
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); if (!running) draw(); });
+
+  function W() { return canvas.getBoundingClientRect().width; }
+  function H() { return canvas.getBoundingClientRect().height; }
+
+  const BALL_R = 10;
+  const PADDLE_H = 10;
+  const PADDLE_W_RATIO = 0.22;
+  const BASE_SPEED = 4;
+
+  let paddleX = 0;
+  let ballX = 0, ballY = 0, ballDX = 0, ballDY = 0;
+  let score = 0, best = 0;
+  let running = false, started = false, dead = false;
+  let speed = BASE_SPEED;
+
+  function paddleW() { return W() * PADDLE_W_RATIO; }
+  function paddleY() { return H() - 24; }
+
+  function getTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  }
+  function paddleColor() { return getTheme() === 'light' ? '#0D0D0D' : '#F0EBE1'; }
+  function textColor() { return getTheme() === 'light' ? '#0D0D0D' : '#F0EBE1'; }
+  function mutedColor() { return '#888580'; }
+  function bgColor() { return getTheme() === 'light' ? '#F5F2EE' : '#0D0D0D'; }
+
+  function reset() {
+    const w = W(), h = H();
+    ballX = w / 2;
+    ballY = h / 2;
+    const angle = (Math.random() * 60 + 30) * (Math.PI / 180);
+    ballDX = BASE_SPEED * Math.cos(angle) * (Math.random() < 0.5 ? 1 : -1);
+    ballDY = -BASE_SPEED * Math.sin(angle);
+    speed = BASE_SPEED;
+    score = 0;
+    paddleX = w / 2 - paddleW() / 2;
+    dead = false;
+  }
+
+  function draw() {
+    const w = W(), h = H();
+    ctx.clearRect(0, 0, w, h);
+
+    // walls (top, left, right)
+    ctx.strokeStyle = mutedColor();
+    ctx.globalAlpha = 0.25;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(0.5, 0.5, w - 1, h - 1);
+    ctx.globalAlpha = 1;
+
+    // paddle
+    const pw = paddleW();
+    const py = paddleY();
+    ctx.fillStyle = paddleColor();
+    ctx.beginPath();
+    ctx.roundRect(paddleX, py, pw, PADDLE_H, 5);
+    ctx.fill();
+
+    // ball
+    ctx.fillStyle = '#C0392B';
+    ctx.beginPath();
+    ctx.arc(ballX, ballY, BALL_R, 0, Math.PI * 2);
+    ctx.fill();
+
+    // score top-right
+    ctx.fillStyle = '#C0392B';
+    ctx.font = '12px monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText(String(score), w - 12, 20);
+
+    if (!started) {
+      ctx.fillStyle = textColor();
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('click to start', w / 2, h / 2 + 40);
+    }
+
+    if (dead) {
+      ctx.fillStyle = textColor();
+      ctx.font = '14px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(`rally ended — ${score} hits`, w / 2, h / 2 - 10);
+      ctx.fillStyle = '#C0392B';
+      ctx.font = '12px monospace';
+      ctx.fillText('try again', w / 2, h / 2 + 16);
+    }
+  }
+
+  function step() {
+    if (!running) return;
+    const w = W(), h = H();
+
+    ballX += ballDX;
+    ballY += ballDY;
+
+    // left/right walls
+    if (ballX - BALL_R <= 0) { ballX = BALL_R; ballDX = Math.abs(ballDX); }
+    if (ballX + BALL_R >= w) { ballX = w - BALL_R; ballDX = -Math.abs(ballDX); }
+    // top wall
+    if (ballY - BALL_R <= 0) { ballY = BALL_R; ballDY = Math.abs(ballDY); }
+
+    // paddle collision
+    const pw = paddleW(), py = paddleY();
+    if (
+      ballY + BALL_R >= py &&
+      ballY + BALL_R <= py + PADDLE_H + Math.abs(ballDY) &&
+      ballX >= paddleX - BALL_R &&
+      ballX <= paddleX + pw + BALL_R &&
+      ballDY > 0
+    ) {
+      score++;
+      if (score % 5 === 0) speed = Math.min(speed * 1.08, BASE_SPEED * 2.5);
+      // angle based on where ball hits paddle
+      const rel = (ballX - (paddleX + pw / 2)) / (pw / 2);
+      const angle = rel * 65 * (Math.PI / 180);
+      ballDX = speed * Math.sin(angle);
+      ballDY = -Math.sqrt(speed * speed - ballDX * ballDX);
+      ballY = py - BALL_R;
+    }
+
+    // bottom — game over
+    if (ballY - BALL_R > h) {
+      running = false;
+      dead = true;
+      if (score > best) {
+        best = score;
+        bestScoreEl.textContent = `best rally: ${best} hits`;
+      }
+    }
+
+    draw();
+    if (running) requestAnimationFrame(step);
+  }
+
+  function start() {
+    if (dead || !started) {
+      reset();
+      started = true;
+      running = true;
+      requestAnimationFrame(step);
+    }
+  }
+
+  canvas.addEventListener('click', start);
+  canvas.addEventListener('touchstart', (e) => { e.preventDefault(); start(); }, { passive: false });
+
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    paddleX = Math.max(0, Math.min(W() - paddleW(), x - paddleW() / 2));
+    if (!running && !dead) draw();
+  });
+
+  canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const x = e.touches[0].clientX - rect.left;
+    paddleX = Math.max(0, Math.min(W() - paddleW(), x - paddleW() / 2));
+  }, { passive: false });
+
+  // init
+  reset();
+  paddleX = W() / 2 - paddleW() / 2;
+  draw();
+</script>

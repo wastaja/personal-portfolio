@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SquashGame from "../components/SquashGame.astro";
 ---
 
 <Layout
@@ -93,6 +94,35 @@ import Layout from "../layouts/Layout.astro";
 
         <hr />
 
+        <!-- Squash game -->
+        <div class="readme-section">
+          <h2>// just for fun</h2>
+          <p class="game-intro">I play squash. A lot. See if you can keep a rally going.</p>
+          <SquashGame />
+        </div>
+
+        <hr />
+
+        <!-- Spotify -->
+        <div class="readme-section">
+          <h2>// if you really want to get to know me</h2>
+          <div style="max-width: 600px;">
+            <iframe
+              data-testid="embed-iframe"
+              style="border-radius:12px"
+              src="https://open.spotify.com/embed/playlist/6EHYvjjMBQOAzvacat3kP9?utm_source=generator&theme=0&si=3be835063219471a"
+              width="100%"
+              height="352"
+              frameBorder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+
+        <hr />
+
         <div class="readme-section">
           <h2>How to work with me</h2>
           <ul>
@@ -132,13 +162,11 @@ import Layout from "../layouts/Layout.astro";
 
   .readme-section h2 {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--color-accent);
-    border-bottom: 0.5px solid var(--color-accent);
-    padding-bottom: 4px;
     margin-bottom: 16px;
   }
 
@@ -149,6 +177,12 @@ import Layout from "../layouts/Layout.astro";
 
   .readme-section p:last-child {
     margin-bottom: 0;
+  }
+
+  .readme-section p.game-intro {
+    margin-bottom: 16px;
+    color: var(--color-muted);
+    font-size: 15px;
   }
 
   .readme-section ul {
