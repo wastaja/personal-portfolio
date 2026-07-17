@@ -15,11 +15,11 @@
     }
 
     :root {
-      --bg: #FFFFFF;
+      --bg: #F5F2EE;
       --text: #0D0D0D;
       --accent: #C0392B;
-      --muted: #555;
-      --tag-bg: #F0EDEA;
+      --muted: #888580;
+      --tag-bg: #EDE8E3;
       --border: #C0392B;
     }
 
@@ -47,7 +47,7 @@
 
     /* Header */
     .header {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .header-name {
@@ -84,13 +84,9 @@
       text-decoration: none;
     }
 
-    .header-contact a:hover {
-      color: var(--accent);
-    }
-
     /* Section */
     .section {
-      margin-bottom: 14px;
+      margin-bottom: 13px;
     }
 
     .section-title {
@@ -182,6 +178,7 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      gap: 8px;
       margin-bottom: 1px;
     }
 
@@ -194,10 +191,22 @@
       color: var(--text);
     }
 
-    .project-link {
+    .project-meta {
       font-size: 8.5px;
       color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .project-meta a {
+      color: var(--muted);
       text-decoration: none;
+    }
+
+    .project-private {
+      font-size: 8.5px;
+      color: var(--muted);
+      font-style: italic;
     }
 
     .project-desc {
@@ -308,6 +317,7 @@
         <a href="mailto:hiiii.taja@gmail.com">hiiii.taja@gmail.com</a>
         <a href="https://github.com/wastaja" target="_blank">github.com/wastaja</a>
         <a href="https://linkedin.com/in/taja-vasilevich" target="_blank">linkedin.com/in/taja-vasilevich</a>
+        <a href="https://tajav.pl" target="_blank">tajav.pl</a>
       </div>
     </div>
 
@@ -315,7 +325,7 @@
     <div class="section">
       <div class="section-title">Professional Summary</div>
       <p class="summary">
-        Analytics Engineer with 3+ years building data models, pipelines, and BI layers. Daily stack: SQL, Snowflake, dbt, PostgreSQL, Python, Power BI, GitHub Actions, Supabase. Experienced in Kimball dimensional modeling, bronze/silver/gold architecture, and cross-functional data work across Sales, Product, Marketing and CS. Currently deepening data engineering skills through hands-on projects and formal training.
+        Analytics Engineer who speaks both data and business. I build the layers between raw operational data and the decisions people make — models, pipelines, and BI infrastructure used daily by Sales, Product, Marketing, and CS. Experienced in Kimball dimensional modeling, bronze/silver/gold architecture, and end-to-end data engineering. Currently deepening cloud and orchestration skills.
       </p>
     </div>
 
@@ -332,10 +342,11 @@
           <div class="entry-period">Nov 2025 – Present</div>
         </div>
         <ul class="entry-bullets">
-          <li>Led data migration for merger of JustJoin IT and RocketJobs employer accounts — deduplicated ~50K employer panels and 60K non-unique users down to 24K panels and 40K unique users, ensuring zero data leakage across legally separate entities</li>
+          <li>Led high-impact data projects including two-brand account merger (JustJoin IT + RocketJobs.pl) and full BI stack migration (Snowflake → Supabase → Lovable), replacing Power BI with a scalable self-serve stack; automated daily sync via GitHub Actions</li>
           <li>Built event analytics layer — unpacking raw PostgreSQL events, designing tracking logic, syncing to Snowflake for downstream reporting</li>
-          <li>Architected Snowflake ↔ Supabase integration for internal BI migration; automated sync via GitHub Actions, managed full database schema in Supabase</li>
           <li>Designed multi-layer data models in Snowflake using dbt (bronze/silver/gold), following Kimball dimensional modeling principles — fact and dimension tables powering cross-team reporting</li>
+          <li>Executed production dbt migration of core mapping key — full dependency audit across repo, safe rollout, historical backfill using last_value ignore nulls window functions</li>
+          <li>Reduced technical debt by refactoring duplicated logic across dbt models into shared intermediate (int_*) layer</li>
           <li>Integrated data from CRM (Pipedrive), product analytics and internal operational datasets</li>
         </ul>
         <div class="entry-stack">Advanced SQL · Snowflake · dbt · Python · PostgreSQL · GitHub Actions · Supabase · APIs · Git</div>
@@ -347,7 +358,7 @@
             <span class="entry-title">Business Data Analyst</span>
             <span class="entry-company"> — Just Join IT</span>
           </div>
-          <div class="entry-period">Apr 2024 – Oct 2025</div>
+          <div class="entry-period">Apr 2024 – Nov 2025</div>
         </div>
         <ul class="entry-bullets">
           <li>Contributed analytics work to a product launch that drove 45% of company annual revenue in its first full year; partnered with Sales pre-launch analyzing customer needs alongside usage data</li>
@@ -382,8 +393,26 @@
 
       <div class="project">
         <div class="project-header">
+          <span class="project-title">Internal Analytics Dashboards</span>
+          <span class="project-meta">Just Join IT, 2025–2026 · <span class="project-private">code private</span></span>
+        </div>
+        <p class="project-desc">Designed full data architecture (Snowflake → Supabase → Lovable) for two production internal dashboards replacing legacy Google Sheets workflows. Automated daily sync via GitHub Actions, implemented RLS, audit logging, and webhook pipeline to Google Sheets.</p>
+        <div class="project-tags">Snowflake · dbt · Supabase · PostgreSQL · GitHub Actions · Lovable · Python · Make</div>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span class="project-title">Account Merger — Data Migration</span>
+          <span class="project-meta">Just Join IT, 2025–2026 · <span class="project-private">code private</span></span>
+        </div>
+        <p class="project-desc">Led data migration merging two separate employer account systems. Deduplicated ~50K employer panels and 60K non-unique users → 24K panels, 40K unique users. Ensured zero data leakage across legally separate entities.</p>
+        <div class="project-tags">SQL · Snowflake · dbt · PostgreSQL · Data Migration</div>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
           <span class="project-title">Squash Performance Analytics</span>
-          <a class="project-link" href="https://github.com/wastaja/squash-performance-analytics" target="_blank">github.com/wastaja/squash-performance-analytics</a>
+          <span class="project-meta"><a href="https://github.com/wastaja/squash-performance-analytics" target="_blank">github.com/wastaja</a></span>
         </div>
         <p class="project-desc">End-to-end pipeline (DuckDB + SQL + Python), layered data models (staging/marts), win probability prediction model, Makefile orchestration.</p>
         <div class="project-tags">Python · DuckDB · SQL · Data Modeling</div>
@@ -392,7 +421,7 @@
       <div class="project">
         <div class="project-header">
           <span class="project-title">Cheese Analytics Pipeline</span>
-          <a class="project-link" href="https://github.com/wastaja/cheese-analytics-pipeline" target="_blank">github.com/wastaja/cheese-analytics-pipeline</a>
+          <span class="project-meta"><a href="https://github.com/wastaja/cheese-analytics-pipeline" target="_blank">github.com/wastaja</a></span>
         </div>
         <p class="project-desc">Web scraping (BeautifulSoup), feature engineering, similarity scoring model for product recommendations, modular Python + Makefile workflow.</p>
         <div class="project-tags">Python · DuckDB · SQL · Web Scraping</div>
@@ -441,7 +470,7 @@
       <div class="section-title">Skills &amp; Languages</div>
       <div class="skills-row">
         <span class="skills-label">Stack:</span>
-        <span class="skills-value">SQL · Snowflake · dbt · PostgreSQL · Python · Power BI · GitHub Actions · APIs · Supabase · Git</span>
+        <span class="skills-value">SQL · Snowflake · dbt · PostgreSQL · Python · Power BI · GitHub Actions · Supabase · Git</span>
       </div>
       <div class="skills-row">
         <span class="skills-label">Languages:</span>
